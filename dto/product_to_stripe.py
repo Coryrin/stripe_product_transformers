@@ -2,13 +2,13 @@ from models.product import Product
 
 class ProductToStripeProductDTO:
     def handles(self, cls) -> bool:
-        return isinstance(Product, cls)
+        return isinstance(cls, Product)
     
     def transform(self, product):
         return {
             "name": product.name,
             "default_price_data": {
                 "currency": "GBP",
-                "unit_amount": 1000 
+                "unit_amount": product.price * 100 
             }
         }
