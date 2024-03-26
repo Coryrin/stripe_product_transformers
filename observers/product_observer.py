@@ -1,5 +1,3 @@
-from services.stripe_service import StripeService
-
 class ProductObserver:
     def event(self, event, **kwargs):
         if event == 'created':
@@ -8,8 +6,7 @@ class ProductObserver:
             return self.updated(kwargs['product'])
         
     def created(self, product):
-        stripe = StripeService()
-        stripe.create_product(product)
+        pass
 
     def updated(self, product):
         print('product updated')
